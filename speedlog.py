@@ -103,12 +103,12 @@ def main(argv=None):
         (up, upunit, down, downunit) = parse_output(testresult)
 
         date = datetime.datetime.now().isoformat()
-        output = [date, up, upunit, down, downunit]
+        output = [date.strip(), up.strip(), upunit.strip(), down.strip(), downunit.strip()]
         output = ";".join(output)
         logging.info(output)
 
         with open(__outputfile__,"ab") as outfile:
-            outfile.write(output)
+            outfile.write(output + "\n")
     except Exception as exc:
         print>>sys.stderr, exc
 
